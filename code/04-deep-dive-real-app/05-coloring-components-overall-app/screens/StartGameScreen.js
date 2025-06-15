@@ -1,23 +1,52 @@
-import { TextInput, View, StyleSheet } from 'react-native';
+import { TextInput, View, StyleSheet, Alert } from 'react-native';
 
 import PrimaryButton from '../components/PrimaryButton';
+import { useState } from 'react';
+
+
 
 function StartGameScreen() {
+  const [enteredNumber, setEnteredNumber] = useState('');
+
+  function handleInputChange(text) {
+    console.log(`Input changed: ${text}`);
+    setEnteredNumber(text);
+   }
+   function confirmInputHandler() {
+    const chosenNumber = parseInt(enteredNumber);
+    if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
+      console.log('Invalid number! Please enter a number between 1 and 99.');
+      Alert.alert(
+        'Invalid Number!',
+        'Please enter a number between 1 and 99.',
+        [{ text: 'Okay', style: 'default', onPress: resetInputHandler }]
+      );
+      return;
+    }
+    console.log(`valid number: ${chosenNumber}`);
+    // Here you can add logic to start the game with the chosen number
+  }
+  function resetInputHandler() {
+    console.log('Input reset');
+    setEnteredNumber('');
+  }
   return (
     <View style={styles.inputContainer}>
       <TextInput
         style={styles.numberInput}
-        maxLength={2}
+        maxLength={3}
         keyboardType="number-pad"
         autoCapitalize="none"
         autoCorrect={false}
+        value ={enteredNumber}
+        onChangeText={handleInputChange}
       />
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonContainer}>
-          <PrimaryButton>Reset</PrimaryButton>
+          <PrimaryButton onPressGetStarted={resetInputHandler} >Reset</PrimaryButton>
         </View>
         <View style={styles.buttonContainer}>
-          <PrimaryButton>Confirm</PrimaryButton>
+          <PrimaryButton onPressGetStarted={confirmInputHandler}>Confirm</PrimaryButton>
         </View>
       </View>
     </View>
@@ -33,7 +62,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
     marginHorizontal: 24,
     padding: 16,
-    backgroundColor: '#4e0329',
+    backgroundColor: '#3b0329',
     borderRadius: 8,
     elevation: 4,
     shadowColor: 'black',
@@ -42,7 +71,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
   },
   numberInput: {
-    height: 50,
+    height: 70,
     width: 50,
     fontSize: 32,
     borderBottomColor: '#ddb52f',
