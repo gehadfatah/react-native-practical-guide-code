@@ -2,10 +2,11 @@ import { TextInput, View, StyleSheet, Alert } from 'react-native';
 
 import PrimaryButton from '../components/PrimaryButton';
 import { useState } from 'react';
+import Title from '../components/Title';
 
 
 
-function StartGameScreen() {
+function StartGameScreen({ onConfirmNumber }) {
   const [enteredNumber, setEnteredNumber] = useState('');
 
   function handleInputChange(text) {
@@ -24,17 +25,24 @@ function StartGameScreen() {
       return;
     }
     console.log(`valid number: ${chosenNumber}`);
+
     // Here you can add logic to start the game with the chosen number
+    onConfirmNumber(chosenNumber);
   }
   function resetInputHandler() {
     console.log('Input reset');
     setEnteredNumber('');
   }
   return (
+    <View style={{ flex: 1, flexDirection: 'column' , alignItems: 'stretch' , marginTop: 150 }}>
+    <Title>Guess My Number</Title>    
+   
+  
+
     <View style={styles.inputContainer}>
       <TextInput
         style={styles.numberInput}
-        maxLength={3}
+        maxLength={2}
         keyboardType="number-pad"
         autoCapitalize="none"
         autoCorrect={false}
@@ -50,6 +58,7 @@ function StartGameScreen() {
         </View>
       </View>
     </View>
+    </View>
   );
 }
 
@@ -59,7 +68,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 100,
+   
     marginHorizontal: 24,
     padding: 16,
     backgroundColor: '#3b0329',
@@ -69,6 +78,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 6,
     shadowOpacity: 0.25,
+    keyboardType: 'number-pad',
   },
   numberInput: {
     height: 70,
@@ -78,7 +88,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     color: '#ddb52f',
     marginVertical: 8,
-    fontWeight: 'bold',
+    fontFamily: 'roboto_thin',
     textAlign: 'center',
   },
   buttonsContainer: {
