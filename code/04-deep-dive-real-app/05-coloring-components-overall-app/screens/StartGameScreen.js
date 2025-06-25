@@ -1,4 +1,4 @@
-import { TextInput, View, StyleSheet, Alert } from 'react-native';
+import { TextInput, View, StyleSheet, Alert, KeyboardAvoidingView, ScrollView } from 'react-native';
 
 import PrimaryButton from '../components/PrimaryButton';
 import { useState } from 'react';
@@ -34,6 +34,8 @@ function StartGameScreen({ onConfirmNumber }) {
     setEnteredNumber('');
   }
   return (
+    <ScrollView >
+    <KeyboardAvoidingView style={{ flex: 1 }} behavior="position" keyboardVerticalOffset={30}>
     <View style={{ flex: 1, flexDirection: 'column' , alignItems: 'stretch' , marginTop: 150 }}>
     <Title>Guess My Number</Title>    
    
@@ -59,6 +61,8 @@ function StartGameScreen({ onConfirmNumber }) {
       </View>
     </View>
     </View>
+    </KeyboardAvoidingView>
+    </ScrollView>
   );
 }
 

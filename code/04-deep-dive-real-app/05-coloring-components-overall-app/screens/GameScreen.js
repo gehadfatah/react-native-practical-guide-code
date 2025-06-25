@@ -1,4 +1,4 @@
-import { Text,StyleSheet , View ,Alert, FlatList } from "react-native";
+import { Text,StyleSheet , View ,Alert, FlatList , Dimensions } from "react-native";
 import Title from "../components/Title";
 import NumberContainer from "../components/NumberContainer";
 import { useState ,useEffect } from "react";
@@ -119,6 +119,7 @@ function GameScreen({userNumber, correct}) {
     </View>
   );
 }
+let deviceWidth = Dimensions.get('window').width;
 export default GameScreen;
 const styles = StyleSheet.create({
   text: {
@@ -141,7 +142,7 @@ const styles = StyleSheet.create({
   
   },
   actionTitle: {
-    fontSize: 20,
+    fontSize: deviceWidth < 380 ? 20 : 24,
     color: 'black',
     padding: 12,
     textAlign: 'center',
