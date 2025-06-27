@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CategoriesScreen from "../screens/CategoriesScreen";
-import MealsCategoryScreen from "../screens/MealsCategoryScreen";
+import MealsCategoryScreen from "../components/MealsItem";
 
 
 const Stack = createNativeStackNavigator();
