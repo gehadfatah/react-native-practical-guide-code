@@ -3,6 +3,7 @@ import Meal from '../models/meal';
 
 export const CATEGORIES = [
   new Category('c1', 'Italian', '#f5428d'),
+  new Category('c0', 'NoMeals', '#4733ed'),
   new Category('c2', 'Quick & Easy', '#f54242'),
   new Category('c3', 'Hamburgers', '#f5a442'),
   new Category('c4', 'German', '#f5d142'),
@@ -15,6 +16,29 @@ export const CATEGORIES = [
 ];
 
 export const MEALS = [
+  new Meal(
+    'm0',
+    ['c0'],
+    'Toast Hawaii',
+    'affordable',
+    'simple',
+    'https://cdn.pixabay.com/photo/2018/07/11/21/51/toast-3532016_1280.jpg',
+    10,
+    [
+      '1 Slice White Bread',
+      '1 Slice Ham',
+      '1 Slice Pineapple',
+      '1-2 Slices of Cheese',
+      'Butter'
+    ],
+    [
+      
+    ],
+    false,
+    false,
+    false,
+    false
+  ),
   new Meal(
     'm1',
     ['c1', 'c2'],
