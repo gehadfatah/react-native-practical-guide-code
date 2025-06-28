@@ -9,6 +9,9 @@ import MealsCategoryScreen from "./screens/MealsCategoryScreen";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
+  console.log('HERE'); // for visibility
+
+
   return (
     <>
       <StatusBar style='light' />
