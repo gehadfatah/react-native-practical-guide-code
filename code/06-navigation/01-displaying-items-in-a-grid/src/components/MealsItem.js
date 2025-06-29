@@ -6,7 +6,7 @@ export function MealItem({ title, imageUrl, steps , id }) {
 
     return (
         <View style={styles.mealItem}>
-                   <Text style={styles.mealTitle}>{title}</Text>
+                   <Text key = {id} style={styles.mealTitle}>{title}</Text>
                    <Image source={{ uri: imageUrl }} style={styles.mealImage} />
                    <FlatList  style={{ width: '100%' , marginTop: 10 }}
                   
@@ -48,6 +48,6 @@ export default MealItem;
         },
         mealSteps: {    
             fontSize: 16,
-            color: '#666',
+            color: '#52976B',
         },
 });
