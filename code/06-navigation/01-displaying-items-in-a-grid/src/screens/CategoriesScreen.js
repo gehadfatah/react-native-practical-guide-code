@@ -21,7 +21,7 @@ function renderCategoryItem(itemData) {
   return (
     <FlatList
       data={CATEGORIES}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item, index) => index.toString()}
       renderItem={renderCategoryItem}
       numColumns={2}
     />

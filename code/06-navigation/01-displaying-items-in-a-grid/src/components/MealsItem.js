@@ -6,13 +6,15 @@ export function MealItem({ title, imageUrl, steps , id }) {
 
     return (
         <View style={styles.mealItem}>
-                   <Text key = {id} style={styles.mealTitle}>{title}</Text>
+                   <Text  style={styles.mealTitle}>{title}</Text>
                    <Image source={{ uri: imageUrl }} style={styles.mealImage} />
                    <FlatList  style={{ width: '100%' , marginTop: 10 }}
                   
                   data={steps}
-                  keyExtractor={(item=> item.id)}
-                  renderItem={({item, index}) => <Text style={styles.mealSteps}>{index+1} - {item}</Text>}
+                  keyExtractor={(item, index) => index.toString()}
+
+                
+                  renderItem={({item, index}) => <Text  style={styles.mealSteps}>{index+1} - {item}</Text>}
                   showsVerticalScrollIndicator={false}
                   contentContainerStyle={{ padding: 10 }}
                   ListEmptyComponent={<Text style = {[styles.mealTitle,{marginVertical:10}]}>No steps available.</Text>}
