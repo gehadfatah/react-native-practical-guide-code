@@ -5,12 +5,14 @@ import { StyleSheet ,
 import CategoriesScreen from './src/screens/CategoriesScreen';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';   // ← JS-based
-
-
+import {Ionicons} from '@expo/vector-icons'; // for icons
+import { createDrawerNavigator } from '@react-navigation/drawer';
+ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; // ← JS-based
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MealsCategoryScreen from "./src/screens/MealsCategoryScreen";
 
 const Stack = createStackNavigator();
+const BottomTab = createBottomTabNavigator();
 export default function App() {
   console.log('HERE'); // for visibility
 
@@ -19,7 +21,7 @@ export default function App() {
     <>
       <StatusBar style='light' />
       <NavigationContainer>
-      <Stack.Navigator 
+      {/* <Stack.Navigator 
         screenOptions={{
       
          headerBackButtonDisplayMode: 'minimal',
@@ -49,7 +51,40 @@ export default function App() {
           
   
         />
-      </Stack.Navigator>
+      </Stack.Navigator> */}
+       <BottomTab.Navigator
+        screenOptions={{
+          headerShown: false,
+          tabBarStyle: { backgroundColor: "#351401" },
+          tabBarActiveTintColor: "white",
+          tabBarInactiveTintColor: "#ccc",
+          tabBarLabelStyle: { fontSize: 14, fontWeight: 'bold' },
+          tabBarItemStyle: { paddingVertical: 5, paddingHorizontal: 10 },
+        }}
+      >
+        <BottomTab.Screen   
+          name="Categories"
+          component={CategoriesScreen}
+          options={{
+            title: "All Categories",
+            tabBarLabel: "Categories",
+            tabBarIcon: ({ color, size }) => (
+      <Ionicons name="list" size={size} color={color} />
+    ),
+          }}
+        />
+        <BottomTab.Screen
+          name="MealsCategory"
+          component={MealsCategoryScreen}
+          options={{
+            title: "Meals Category",
+            tabBarLabel: "Meals",
+            tabBarIcon: ({ color , size }) => (
+              <Ionicons name="attach-outline" size={size} color={color} />
+            ),
+          }}
+        />
+      </BottomTab.Navigator>
     </NavigationContainer>
     </>
   );
