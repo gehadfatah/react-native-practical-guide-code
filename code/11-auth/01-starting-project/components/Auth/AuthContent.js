@@ -5,7 +5,7 @@ import FlatButton from '../ui/FlatButton';
 import AuthForm from './AuthForm';
 import { Colors } from '../../constants/styles';
 
-function AuthContent({ isLogin, onAuthenticate }) {
+function AuthContent({ isLogin, onAuthenticate , navigation }) {
 
   const [credentialsInvalid, setCredentialsInvalid] = useState({
     email: false,
@@ -16,6 +16,10 @@ function AuthContent({ isLogin, onAuthenticate }) {
 
   function switchAuthModeHandler() {
     // Todo
+    // Implement logic to switch between login and signup modes
+    navigation.replace(
+      isLogin ? 'Signup' : 'Login'
+    );
   }
 
   function submitHandler(credentials) {

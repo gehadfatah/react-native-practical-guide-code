@@ -10,7 +10,8 @@ function ExpenseItem({ description, amount, date }) {
           <Text style={[styles.textBase, styles.description]}>
             {description}
           </Text>
-          <Text style={styles.textBase}>{date.toString()}</Text>
+          {/* toLocaleDateString */}
+          <Text style={styles.textBase}>{date.toDateString()}</Text>
         </View>
         <View style={styles.amountContainer}>
           <Text style={styles.amount}>{amount}</Text>

@@ -41,7 +41,7 @@ const DUMMY_EXPENSES = [
     id: 'e7',
     description: 'Some bananas',
     amount: 5.99,
-    date: new Date('2021-12-01'),
+    date: new Date('2025-07-16'),
   },
   {
     id: 'e8',
@@ -74,8 +74,10 @@ function expensesReducer(state, action) {
         (expense) => expense.id === action.payload.id
       );
       const updatableExpense = state[updatableExpenseIndex];
+
       const updatedItem = { ...updatableExpense, ...action.payload.data };
       const updatedExpenses = [...state];
+     // updatedExpenses[updatableExpenseIndex] = {...action.payload.data};
       updatedExpenses[updatableExpenseIndex] = updatedItem;
       return updatedExpenses;
     case 'DELETE':

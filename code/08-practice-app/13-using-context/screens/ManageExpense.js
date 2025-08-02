@@ -32,16 +32,16 @@ function ManageExpense({ route, navigation }) {
       expensesCtx.updateExpense(
         editedExpenseId,
         {
-          description: 'Test!!!!',
+          description: 'updatedTest!!!!',
           amount: 29.99,
-          date: new Date('2022-05-20'),
+          date: new Date(),
         }
       );
     } else {
       expensesCtx.addExpense({
         description: 'Test',
         amount: 19.99,
-        date: new Date('2022-05-19'),
+        date: new Date('2025-06-25'),
       });
     }
     navigation.goBack();

@@ -1,16 +1,19 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect , useState } from 'react';
 
 import ExpensesOutput from '../components/ExpensesOutput/ExpensesOutput';
 import { ExpensesContext } from '../store/expenses-context';
 import { getDateMinusDays } from '../util/date';
 import { fetchExpenses } from '../util/http';
-
+import LoadingOverlay from '../components/UI/ProgressLoading';
 function RecentExpenses() {
   const expensesCtx = useContext(ExpensesContext);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function getExpenses() {
+      setLoading(true);
       const expenses = await fetchExpenses();
+      setLoading(false);
       expensesCtx.setExpenses(expenses);
     }
 
@@ -25,11 +28,12 @@ function RecentExpenses() {
   });
 
   return (
-    <ExpensesOutput
-      expenses={recentExpenses}
-      expensesPeriod="Last 7 Days"
-      fallbackText="No expenses registered for the last 7 days."
-    />
+    loading ? <LoadingOverlay /> :<ExpensesOutput
+    expenses={recentExpenses}
+    expensesPeriod="Last 7 Days"
+    fallbackText="No expenses registered for the last 7 days."
+  />
+    
   );
 }
 

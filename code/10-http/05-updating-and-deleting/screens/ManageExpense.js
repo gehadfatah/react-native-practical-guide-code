@@ -35,7 +35,9 @@ function ManageExpense({ route, navigation }) {
 
   async function confirmHandler(expenseData) {
     if (isEditing) {
+      
       expensesCtx.updateExpense(editedExpenseId, expenseData);
+
       await updateExpense(editedExpenseId, expenseData);
     } else {
       const id = await storeExpense(expenseData);
